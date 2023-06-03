@@ -17,12 +17,3 @@
     font-family: "Tauri";
   }
 }
-
-@layer components {
-  .menu-hide {
-    display: none;
-  }
-  .menu-visable {
-    display: block;
-  }
-}

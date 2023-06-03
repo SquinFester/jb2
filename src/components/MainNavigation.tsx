@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import logoNav from "../assets/logoNav.png";
 import { HiMenu, HiMenuAlt3 } from "react-icons/hi";
+import HamburgerMenu from "./HamburgerMenu";
 
 const PagesList = [
   {
@@ -29,25 +30,31 @@ const PagesList = [
 ];
 
 const MainNavigation = () => {
-  const [isAciveMenu, setIsAciveMenu] = useState(false);
+  const [isAciveMenu, setIsAciveMenu] = useState<boolean>(false);
 
   return (
-    <header>
-      <nav className="mx-auto w-2/3 p-3">
-        <div className="flex items-center justify-between">
-          <Link to="/">
-            <img src={logoNav} alt="logo" className="w-2/3" />
-          </Link>
-          <div
-            onClick={() => setIsAciveMenu((prev) => !prev)}
-            className="text-3xl"
-          >
-            {isAciveMenu ? <HiMenuAlt3 /> : <HiMenu />}
-          </div>
+    <header className={isAciveMenu ? "" : "shadow-md"}>
+      <nav className="mx-auto flex w-2/3 items-center justify-between p-3">
+        <Link to="/">
+          <img src={logoNav} alt="logo" className="w-2/3" />
+        </Link>
+        <div
+          onClick={() => setIsAciveMenu((prev) => !prev)}
+          className="cursor-pointer text-3xl"
+        >
+          <HamburgerMenu hide={isAciveMenu} />
         </div>
-        <ul className={isAciveMenu ? "menu-visable" : "menu-hide"}>
+      </nav>
+      <nav>
+        <ul
+          className={`fixed z-50 w-screen origin-top bg-primary px-14 text-xl shadow-md ${
+            isAciveMenu
+              ? "translate-y-0 animate-open-menu"
+              : " -translate-y-[150%] animate-close-menu"
+          } `}
+        >
           {PagesList.map((page) => (
-            <li key={page.id}>
+            <li key={page.id} className="my-4">
               <Link to={page.path}>{page.name}</Link>
             </li>
           ))}

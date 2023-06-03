@@ -2,7 +2,33 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#2c2b2b",
+      },
+      keyframes: {
+        "open-menu": {
+          "0%": {
+            transform: "scaleY(0)",
+          },
+          "100%": {
+            transform: "scaleY(1)",
+          },
+        },
+        "close-menu": {
+          "0%": {
+            transform: "scaleY(1)",
+          },
+          "100%": {
+            transform: "scaleY(0)",
+          },
+        },
+      },
+      animation: {
+        "open-menu": "open-menu 0.5s ease-in-out",
+        "close-menu": "close-menu 0.5s ease-in-out",
+      },
+    },
   },
   plugins: [],
 };
