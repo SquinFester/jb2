@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import logoNav from "../assets/logoNav.png";
-import { HiMenu, HiMenuAlt3 } from "react-icons/hi";
 import HamburgerMenu from "./HamburgerMenu";
 
 const PagesList = [
