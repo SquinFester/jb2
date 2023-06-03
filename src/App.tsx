@@ -1,5 +1,17 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Root from "./routes/Root";
+import ErrorPage from "./routes/ErrorPage";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <ErrorPage />,
+  },
+]);
+
 function App() {
-  return <h1>elo</h1>;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
