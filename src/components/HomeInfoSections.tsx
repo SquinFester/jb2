@@ -3,9 +3,11 @@ import { ReactNode } from "react";
 const HomeInfoSections = ({
   children,
   bgImg,
+  className,
 }: {
   children: ReactNode;
   bgImg?: string;
+  className?: string;
 }) => {
   const styleBg = {
     backgroundImage: `url(${bgImg})`,
@@ -13,7 +15,7 @@ const HomeInfoSections = ({
 
   return (
     <section
-      className="bg-cover bg-fixed bg-center px-14 py-10 text-center"
+      className={`bg-cover bg-fixed bg-center px-14 py-10 text-center ${className}`}
       style={styleBg}
     >
       {children}

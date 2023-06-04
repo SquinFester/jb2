@@ -20,7 +20,7 @@ const OfertCard = ({ title, path, image }: Ofert) => {
         w-full bg-red-500 py-1 text-xl 
       "
         >
-          <p className="transition hover:translate-x-2 focus:translate-x-2 active:translate-x-2">{`SPRAWDZ >>>`}</p>
+          <p className="transition hover:translate-x-2 focus:translate-x-2 active:translate-x-2">{`SPRAWDŹ >>>`}</p>
         </Link>
       </div>
     </section>

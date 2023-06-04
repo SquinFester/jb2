@@ -67,7 +67,7 @@ const MainNavigation = () => {
           {PagesList.map((page) => (
             <li
               key={page.id}
-              className="my-4 border-b pb-1 lg:my-0 lg:border-b-0 lg:px-1 lg:py-2 lg:hover:bg-[#474747]"
+              className="my-4 border-b pb-1 [word-spacing:0.3rem] lg:my-0 lg:border-b-0 lg:px-1 lg:py-2 lg:hover:bg-[#474747]"
             >
               <NavLink
                 to={page.path}
