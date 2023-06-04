@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./routes/Root";
 import ErrorPage from "./routes/ErrorPage";
 import HomePage from "./routes/HomePage";
+import RenowacjeFabryczne from "./routes/RenowacjeFabryczne";
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: "renowacje-fabryczne",
+        element: <RenowacjeFabryczne />,
       },
     ],
   },
