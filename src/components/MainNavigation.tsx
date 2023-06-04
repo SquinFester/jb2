@@ -56,9 +56,9 @@ const MainNavigation = () => {
       </nav>
       <nav>
         <ul
-          className={`fixed  w-screen origin-top bg-primary px-14 text-xl shadow-md lg:static lg:flex lg:w-fit lg:translate-y-0 lg:justify-between lg:gap-7 lg:px-0 lg:text-base lg:shadow-none ${
+          className={`fixed z-10 w-screen origin-top  bg-primary px-14 text-xl shadow-md lg:static lg:flex lg:w-fit lg:translate-y-0 lg:justify-between lg:gap-7 lg:px-0 lg:text-base lg:shadow-none ${
             isAciveMenu
-              ? "z-10 animate-open-menu"
+              ? "animate-open-menu"
               : `-translate-y-[150%] ${
                   isAnimationStart ? "animate-close-menu" : ""
                 }`
