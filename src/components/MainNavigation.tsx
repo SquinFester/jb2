@@ -30,30 +30,45 @@ const PagesList = [
 
 const MainNavigation = () => {
   const [isAciveMenu, setIsAciveMenu] = useState<boolean>(false);
+  const [isAnimationStart, setIsAnimationStart] = useState<boolean>(false);
 
   return (
-    <header className={isAciveMenu ? "" : "shadow-md"}>
-      <nav className="mx-auto flex w-2/3 items-center justify-between p-3">
+    <header
+      className={` lg:flex lg:items-center lg:justify-around lg:shadow-md ${
+        isAciveMenu ? "" : "shadow-md"
+      }`}
+    >
+      <nav className="relative z-50 flex items-center justify-between bg-primary px-14 py-3 lg:mx-0 lg:w-fit">
         <Link to="/">
           <img src={logoNav} alt="logo" className="w-2/3" />
         </Link>
-        <div
-          onClick={() => setIsAciveMenu((prev) => !prev)}
-          className="cursor-pointer text-3xl"
+        <menu
+          onClick={() =>
+            setIsAciveMenu((prev) => {
+              setIsAnimationStart(() => true);
+              return !prev;
+            })
+          }
+          className="cursor-pointer text-3xl lg:hidden"
         >
           <HamburgerMenu hide={isAciveMenu} />
-        </div>
+        </menu>
       </nav>
       <nav>
         <ul
-          className={`fixed z-50 w-screen origin-top bg-primary px-14 text-xl shadow-md ${
+          className={`fixed  w-screen origin-top bg-primary px-14 text-xl shadow-md lg:static lg:flex lg:w-fit lg:translate-y-0 lg:justify-between lg:gap-7 lg:px-0 lg:text-base lg:shadow-none ${
             isAciveMenu
-              ? "translate-y-0 animate-open-menu"
-              : " -translate-y-[150%] animate-close-menu"
+              ? "z-10 animate-open-menu"
+              : `-translate-y-[150%] ${
+                  isAnimationStart ? "animate-close-menu" : ""
+                }`
           } `}
         >
           {PagesList.map((page) => (
-            <li key={page.id} className="my-4">
+            <li
+              key={page.id}
+              className="my-4 border-b pb-1 lg:my-0 lg:border-b-0 lg:px-1 lg:py-2 lg:hover:bg-[#474747]"
+            >
               <Link to={page.path}>{page.name}</Link>
             </li>
           ))}

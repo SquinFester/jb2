@@ -9,18 +9,18 @@ export default {
       keyframes: {
         "open-menu": {
           "0%": {
-            transform: "scaleY(0)",
+            transform: "translateY(-100%)",
           },
           "100%": {
-            transform: "scaleY(1)",
+            transform: "translateY(0)",
           },
         },
         "close-menu": {
           "0%": {
-            transform: "scaleY(1)",
+            transform: "translateY(0)",
           },
           "100%": {
-            transform: "scaleY(0)",
+            transform: "translateY(-100%)",
           },
         },
       },
