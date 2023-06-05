@@ -1,5 +1,7 @@
+import Container from "../UI/Container";
+
 const RenowacjeFabryczne = () => {
-  return <div>RenowacjeFabryczne</div>;
+  return <Container title="renowacje fabryczne">RenowacjeFabryczne</Container>;
 };
 
 export default RenowacjeFabryczne;

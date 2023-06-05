@@ -3,7 +3,10 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import logoNav from "../assets/logoNav.png";
-import HamburgerMenu from "./HamburgerMenu";
+import logoNav2 from "../assets/logoNav2.png";
+import logoNav3 from "../assets/logoNav3.png";
+
+import HamburgerMenu from "../UI/HamburgerMenu";
 
 const PagesList = [
   {
@@ -32,15 +35,19 @@ const MainNavigation = () => {
   const [isAciveMenu, setIsAciveMenu] = useState<boolean>(false);
   const [isAnimationStart, setIsAnimationStart] = useState<boolean>(false);
 
+  const hideHandler = () => {
+    setIsAciveMenu(() => false);
+  };
+
   return (
     <header
-      className={`sticky top-0 z-50 w-full bg-primary lg:flex lg:items-center lg:justify-around lg:shadow-md ${
-        isAciveMenu ? "" : "shadow-md"
-      }`}
+      className={
+        "sticky top-0 z-50  w-full bg-primary shadow-md lg:flex lg:items-center lg:justify-around"
+      }
     >
-      <nav className="relative z-50 flex w-full items-center justify-between bg-primary px-14 py-3 lg:mx-0 lg:w-fit">
-        <Link to="/">
-          <img src={logoNav} alt="logo" className="w-2/3" />
+      <nav className="relative z-50 flex w-full items-center justify-between bg-primary px-14 py-5 lg:mx-0 lg:w-fit">
+        <Link to="/" onClick={hideHandler}>
+          <img src={logoNav2} alt="logo" className="w-2/3 md:w-full" />
         </Link>
         <menu
           onClick={() =>
@@ -65,17 +72,16 @@ const MainNavigation = () => {
           } `}
         >
           {PagesList.map((page) => (
-            <li
+            <NavLink
+              to={page.path}
+              className={({ isActive }) => (isActive ? "text-red-500" : "")}
               key={page.id}
-              className="my-4 border-b pb-1 [word-spacing:0.3rem] lg:my-0 lg:border-b-0 lg:px-1 lg:py-2 lg:hover:bg-[#474747]"
+              onClick={hideHandler}
             >
-              <NavLink
-                to={page.path}
-                className={({ isActive }) => (isActive ? "text-red-500" : "")}
-              >
+              <li className="my-4 border-b pb-1 [word-spacing:0.3rem] lg:my-0 lg:border-b-0 lg:px-1 lg:py-2 lg:hover:bg-[#474747]">
                 {page.name}
-              </NavLink>
-            </li>
+              </li>
+            </NavLink>
           ))}
         </ul>
       </nav>

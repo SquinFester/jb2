@@ -3,6 +3,9 @@ import Root from "./routes/Root";
 import ErrorPage from "./routes/ErrorPage";
 import HomePage from "./routes/HomePage";
 import RenowacjeFabryczne from "./routes/RenowacjeFabryczne";
+import ContactPage from "./routes/ContactPage";
+import Aerograf from "./routes/Aerograf";
+import ZabytkoweMotory from "./routes/ZabytkoweMotory";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +20,18 @@ const router = createBrowserRouter([
       {
         path: "renowacje-fabryczne",
         element: <RenowacjeFabryczne />,
+      },
+      {
+        path: "kontakt",
+        element: <ContactPage />,
+      },
+      {
+        path: "aerograf",
+        element: <Aerograf />,
+      },
+      {
+        path: "zabytkowe-motory",
+        element: <ZabytkoweMotory />,
       },
     ],
   },

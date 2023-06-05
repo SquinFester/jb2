@@ -11,8 +11,8 @@ const ContactSection = () => {
     <HomeInfoSections>
       <Heading title="Kontakt" />
       <h2 className="mb-4 text-center text-2xl">Jeremi BORACKI</h2>
-      <section className="flex items-start justify-center gap-4 text-lg">
-        <div className="flex w-1/2  justify-end text-left md:gap-2">
+      <section className="flex items-start justify-center gap-4 text-sm md:gap-8 md:text-lg">
+        <div className="flex w-1/2  justify-end text-left  md:gap-2">
           <div className="flex flex-col gap-4 md:gap-2">
             <a
               href="https://www.facebook.com/"
@@ -42,7 +42,7 @@ const ContactSection = () => {
             <BiPhoneCall className="text-xl" />
             <span className="underline">505-795-006</span>
           </a>
-          <h1 className="flex items-center gap-2">
+          <h1 className="flex items-start gap-2 leading-6 md:items-end md:leading-none ">
             <AiFillHome className="text-xl" />
             Nowe tłoki; <br className="md:hidden" />
             64-200 Wolsztyn
