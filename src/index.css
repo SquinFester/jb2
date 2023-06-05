@@ -16,4 +16,8 @@
     color: #fff;
     font-family: "Geologica", sans-serif;
   }
+
+  .main-height {
+    min-height: calc(100vh - 64.66px - 72px);
+  }
 }

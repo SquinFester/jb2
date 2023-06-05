@@ -7,7 +7,7 @@ const Root = () => {
   return (
     <>
       <MainNavigation />
-      <main>{<Outlet />}</main>
+      <main className="main-height">{<Outlet />}</main>
       <Footer />
     </>
   );

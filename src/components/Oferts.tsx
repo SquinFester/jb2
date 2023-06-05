@@ -34,7 +34,7 @@ const Oferts = () => {
     <HomeInfoSections bgImg={bgPattern}>
       <section className="mx-auto max-w-6xl">
         <Heading title="Oferty" />
-        <ul className="flex flex-col items-center justify-around gap-10 lg:flex-row ">
+        <ul className="flex flex-col items-center justify-around gap-10 md:flex-row md:flex-wrap md:justify-start  lg:flex-row lg:flex-nowrap lg:justify-center">
           {OfertsList.map((ofert) => (
             <li key={ofert.id}>
               <OfertCard {...ofert} />
