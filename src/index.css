@@ -18,12 +18,6 @@
   }
 
   .main-height {
-    min-height: calc(100vh - 60.66px - 72px);
-  }
-
-  @media screen and (min-width: 768px) {
-    .main-height {
-      min-height: calc(100vh - 71px - 72px);
-    }
+    min-height: calc(100vh - 63px - 72px);
   }
 }

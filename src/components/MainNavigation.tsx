@@ -2,9 +2,7 @@ import { useState } from "react";
 
 import { Link, NavLink } from "react-router-dom";
 
-import logoNav from "../assets/logoNav.png";
 import logoNav2 from "../assets/logoNav2.png";
-import logoNav3 from "../assets/logoNav3.png";
 
 import HamburgerMenu from "../UI/HamburgerMenu";
 
@@ -47,12 +45,12 @@ const MainNavigation = () => {
     >
       <nav className="relative z-50 flex w-full items-center justify-between bg-primary px-14 py-5 lg:mx-0 lg:w-fit">
         <Link to="/" onClick={hideHandler}>
-          <img src={logoNav2} alt="logo" className="w-2/3 md:w-full" />
+          <img src={logoNav2} alt="logo" className="w-full" />
         </Link>
         <menu
           onClick={() =>
             setIsAciveMenu((prev) => {
-              setIsAnimationStart(() => true);
+              !isAnimationStart && setIsAnimationStart(() => true);
               return !prev;
             })
           }
