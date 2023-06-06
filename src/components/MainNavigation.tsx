@@ -31,7 +31,6 @@ const PagesList = [
 
 const MainNavigation = () => {
   const [isAciveMenu, setIsAciveMenu] = useState<boolean>(false);
-  const [isAnimationStart, setIsAnimationStart] = useState<boolean>(false);
 
   const hideHandler = () => {
     setIsAciveMenu(() => false);
@@ -50,7 +49,6 @@ const MainNavigation = () => {
         <menu
           onClick={() =>
             setIsAciveMenu((prev) => {
-              !isAnimationStart && setIsAnimationStart(() => true);
               return !prev;
             })
           }
@@ -61,13 +59,11 @@ const MainNavigation = () => {
       </nav>
       <nav>
         <ul
-          className={`fixed z-10 w-screen origin-top bg-primary px-14 text-xl shadow-md lg:static lg:flex lg:w-fit lg:translate-y-0 lg:justify-between lg:gap-7 lg:px-0 lg:text-base lg:shadow-none ${
-            isAciveMenu
-              ? "animate-open-menu"
-              : `-translate-y-[150%] ${
-                  isAnimationStart ? "animate-close-menu" : ""
-                }`
-          } `}
+          className={`fixed z-10 w-screen origin-top bg-primary px-14 text-xl shadow-md duration-500 ease-out 
+          
+          lg:static lg:flex lg:w-fit lg:translate-y-0 lg:justify-between lg:gap-7 lg:px-0 lg:text-base lg:shadow-none 
+          lg:duration-0
+          ${isAciveMenu ? "" : "-translate-y-[150%]"} `}
         >
           {PagesList.map((page) => (
             <NavLink
@@ -76,7 +72,10 @@ const MainNavigation = () => {
               key={page.id}
               onClick={hideHandler}
             >
-              <li className="my-4 border-b pb-1 [word-spacing:0.3rem] lg:my-0 lg:border-b-0 lg:px-1 lg:py-2 lg:hover:bg-[#474747]">
+              <li
+                className="my-4 border-b pb-1 [word-spacing:0.3rem] 
+              lg:my-0 lg:border-b-0 lg:px-1 lg:py-2 lg:hover:bg-[#474747]"
+              >
                 {page.name}
               </li>
             </NavLink>

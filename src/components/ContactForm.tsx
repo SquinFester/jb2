@@ -1,12 +1,25 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
+
+import { Status } from "../routes/ContactPage";
 
 import emailjs from "@emailjs/browser";
 
-const ContactForm = () => {
+const ContactForm = ({
+  onSetStatus,
+}: {
+  onSetStatus: React.Dispatch<React.SetStateAction<Status>>;
+}) => {
+  const [loading, setLoading] = useState(false);
+
+  const statusHandler = (status: Status) => {
+    onSetStatus(() => status);
+  };
+
   const form = useRef() as React.MutableRefObject<HTMLFormElement>;
 
   const sendEmail = (e: React.SyntheticEvent) => {
     e.preventDefault();
+    setLoading(() => true);
 
     const inputs = form.current.elements;
     const name = inputs[0] as HTMLInputElement;
@@ -38,12 +51,14 @@ const ContactForm = () => {
       name.value = "";
       email.value = "";
       message.value = "";
+      statusHandler("Sukces");
+      setLoading(() => false);
     } else {
+      statusHandler("Błąd");
+      setLoading(() => false);
       return;
     }
   };
-
-  const inputClass = "";
 
   return (
     <form
@@ -77,8 +92,18 @@ const ContactForm = () => {
           required
         />
       </section>
-      <button type="submit" className="bg-red-500 py-2 ">
-        Wyślij
+      <button
+        type="submit"
+        className={`bg-red-500 py-2 transition 
+        ${
+          loading
+            ? "cursor-not-allowed focus:bg-red-600"
+            : "bg-red-500 hover:bg-red-600 focus:bg-red-600 active:bg-red-600"
+        }
+        `}
+        disabled={loading}
+      >
+        {loading ? "Wysłanie..." : "Wyślij"}
       </button>
     </form>
   );
