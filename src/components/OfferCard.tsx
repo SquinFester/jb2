@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
-type Ofert = {
+type Offer = {
   title: string;
   path: string;
   image: string;
 };
 
-const OfertCard = ({ title, path, image }: Ofert) => {
+const OfferCard = ({ title, path, image }: Offer) => {
   return (
     <section
       style={{ backgroundImage: `url(${image})` }}
@@ -27,4 +27,4 @@ const OfertCard = ({ title, path, image }: Ofert) => {
   );
 };
 
-export default OfertCard;
+export default OfferCard;

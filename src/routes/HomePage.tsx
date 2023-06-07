@@ -1,13 +1,13 @@
 import BannerSection from "../components/BannerSection";
 import ContactSection from "../components/ContactSection";
-import Oferts from "../components/Oferts";
+import Offers from "../components/Offers";
 import SocialMediaSection from "../components/SocialMediaSection";
 
 const HomePage = () => {
   return (
     <>
       <BannerSection />
-      <Oferts />
+      <Offers />
       <SocialMediaSection />
       <ContactSection />
     </>
