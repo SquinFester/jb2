@@ -40,18 +40,17 @@ const ContactForm = ({
           "-Bz90bhoChewjmhy0"
         )
         .then(
-          (result) => {
-            console.log(result.text);
+          () => {
+            statusHandler("Sukces");
           },
-          (error) => {
-            console.log(error.text);
+          () => {
+            statusHandler("Błąd");
           }
         );
 
       name.value = "";
       email.value = "";
       message.value = "";
-      statusHandler("Sukces");
       setLoading(() => false);
     } else {
       statusHandler("Błąd");
@@ -67,19 +66,19 @@ const ContactForm = ({
       className="mx-auto flex max-w-lg flex-col gap-5"
     >
       <section className="flex flex-col gap-2">
-        <label htmlFor="user_name">Imię:</label>
+        <label htmlFor="from_name">Imię:</label>
         <input
           type="text"
-          name="user_name"
-          id="user_name"
+          name="from_name"
+          id="from_name"
           className="p-1 text-black"
           required
         />
-        <label htmlFor="user_email">Email:</label>
+        <label htmlFor="from_email">Email:</label>
         <input
           type="email"
-          name="user_email"
-          id="user_email"
+          name="from_email"
+          id="from_email"
           className="p-1  text-black"
           required
         />
