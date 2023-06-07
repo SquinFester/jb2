@@ -61,12 +61,10 @@ const MainNavigation = () => {
       </nav>
       <nav>
         <ul
-          className={`fixed z-10 w-screen origin-top bg-primary px-14 text-xl shadow-md lg:static lg:flex lg:w-fit lg:translate-y-0 lg:justify-between lg:gap-7 lg:px-0 lg:text-base lg:shadow-none ${
-            isAciveMenu
-              ? "animate-open-menu"
-              : `-translate-y-[150%] ${
-                  isAnimationStart ? "animate-close-menu" : ""
-                }`
+          className={`fixed z-10 w-screen bg-primary px-14 text-xl shadow-md duration-500 ease-out 
+          
+          lg:static lg:flex lg:w-fit lg:translate-y-0 lg:justify-between lg:gap-7 lg:px-0 lg:text-base lg:shadow-none lg:duration-0 ${
+            isAciveMenu ? "" : "-translate-y-[150%] "
           } `}
         >
           {PagesList.map((page) => (
