@@ -4,30 +4,9 @@ import { Link, NavLink } from "react-router-dom";
 
 import logoNav2 from "../assets/logoNav2.png";
 
-import HamburgerMenu from "../UI/HamburgerMenu";
+import HamburgerMenu from "../layouts/HamburgerMenu";
 
-const PagesList = [
-  {
-    id: "p2",
-    path: "/renowacje-fabryczne",
-    name: "RENOWACJE FABRYCZNE",
-  },
-  {
-    id: "p3",
-    path: "/aerograf",
-    name: "AEROGRAF",
-  },
-  {
-    id: "p4",
-    path: "/zabytkowe-motory",
-    name: "ZABYTKOWE MOTORY",
-  },
-  {
-    id: "p5",
-    path: "/kontakt",
-    name: "KOTNAKT",
-  },
-];
+import { pageList } from "../data/pagesList";
 
 const MainNavigation = () => {
   const [isAciveMenu, setIsAciveMenu] = useState<boolean>(false);
@@ -65,7 +44,7 @@ const MainNavigation = () => {
           lg:duration-0
           ${isAciveMenu ? "" : "-translate-y-[150%]"} `}
         >
-          {PagesList.map((page) => (
+          {pageList.map((page) => (
             <NavLink
               to={page.path}
               className={({ isActive }) => (isActive ? "text-red-500" : "")}

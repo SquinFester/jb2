@@ -1,4 +1,4 @@
-import Container from "../UI/Container";
+import Container from "../layouts/Container";
 
 const ZabytkoweMotory = () => {
   return <Container title="Zabytkowe Motory">ZabytkoweMotory</Container>;

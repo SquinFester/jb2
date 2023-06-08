@@ -1,4 +1,4 @@
-import Heading from "./Heading";
+import Heading from "../layouts/Heading";
 import HomeInfoSections from "./HomeInfoSections";
 
 import { BiPhoneCall } from "react-icons/bi";
