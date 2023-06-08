@@ -24,6 +24,13 @@ export const fetchapp = async () => {
   const response = await list(listRef, { maxResults: 100 });
   response.items.forEach((item) => {
     getDownloadURL(ref(storage, `motory/${item.name}`)).then((url) => {
+      const xhr = new XMLHttpRequest();
+      xhr.responseType = "blob";
+      xhr.onload = () => {
+        xhr.response;
+      };
+      xhr.open("GET", url);
+      xhr.send();
       data.push(url);
     });
   });
