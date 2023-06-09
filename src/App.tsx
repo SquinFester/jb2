@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, defer } from "react-router-dom";
 import Root from "./routes/Root";
 import ErrorPage from "./routes/ErrorPage";
 import HomePage from "./routes/HomePage";
@@ -6,6 +6,8 @@ import RenowacjeFabryczne from "./routes/RenowacjeFabryczne";
 import ContactPage from "./routes/ContactPage";
 import Aerograf from "./routes/Aerograf";
 import ZabytkoweMotory from "./routes/ZabytkoweMotory";
+
+import { fetchapp } from "./data/firebase";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "renowacje-fabryczne",
         element: <RenowacjeFabryczne />,
+        loader: async () =>
+          defer({
+            urls: await fetchapp("renowacje"),
+          }),
       },
       {
         path: "kontakt",

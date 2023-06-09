@@ -13,26 +13,18 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-const storage = getStorage(app);
+export const storage = getStorage(app);
 
 // Create a reference under which you want to list
-const listRef = ref(storage, "motory/");
 
 // Find all the prefixes and items.
-export const fetchapp = async () => {
-  const data: string[] = [];
+export const fetchapp = async (folder: string) => {
+  const listRef = ref(storage, `${folder}/`);
+
   const response = await list(listRef, { maxResults: 100 });
-  response.items.forEach((item) => {
-    getDownloadURL(ref(storage, `motory/${item.name}`)).then((url) => {
-      const xhr = new XMLHttpRequest();
-      xhr.responseType = "blob";
-      xhr.onload = () => {
-        xhr.response;
-      };
-      xhr.open("GET", url);
-      xhr.send();
-      data.push(url);
-    });
-  });
+  const dataPromises = response.items.map((item) =>
+    getDownloadURL(ref(storage, `${folder}/${item.name}`))
+  );
+  const data = await Promise.all(dataPromises);
   return data;
 };
