@@ -25,6 +25,7 @@ export const fetchapp = async (folder: string) => {
   const dataPromises = response.items.map((item) =>
     getDownloadURL(ref(storage, `${folder}/${item.name}`))
   );
+
   const data = await Promise.all(dataPromises);
   return data;
 };

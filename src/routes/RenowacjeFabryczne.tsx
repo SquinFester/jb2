@@ -1,18 +1,13 @@
-import { Suspense } from "react";
-import { Await, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import Container from "../layouts/Container";
+import ImagesList from "../components/ImagesList";
 
 const RenowacjeFabryczne = () => {
-  const { urls } = useLoaderData();
-  console.log(urls);
+  const { urls } = useLoaderData() as { urls: string[] };
 
   return (
     <Container title="renowacje fabryczne">
-      <Suspense fallback={<p>loading...</p>}>
-        <Await resolve={urls}>
-          {(loadedUrls) => <h1 key={loadedUrls}>{loadedUrls}</h1>}
-        </Await>
-      </Suspense>
+      <ImagesList urls={urls} />
     </Container>
   );
 };

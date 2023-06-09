@@ -28,16 +28,24 @@ const router = createBrowserRouter([
           }),
       },
       {
-        path: "kontakt",
-        element: <ContactPage />,
-      },
-      {
         path: "aerograf",
         element: <Aerograf />,
+        loader: async () =>
+          defer({
+            urls: await fetchapp("aerograf"),
+          }),
       },
       {
         path: "zabytkowe-motory",
         element: <ZabytkoweMotory />,
+        loader: async () =>
+          defer({
+            urls: await fetchapp("motory"),
+          }),
+      },
+      {
+        path: "kontakt",
+        element: <ContactPage />,
       },
     ],
   },

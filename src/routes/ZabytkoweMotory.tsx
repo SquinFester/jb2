@@ -1,7 +1,15 @@
+import { useLoaderData } from "react-router-dom";
 import Container from "../layouts/Container";
+import ImagesList from "../components/ImagesList";
 
 const ZabytkoweMotory = () => {
-  return <Container title="Zabytkowe Motory">ZabytkoweMotory</Container>;
+  const { urls } = useLoaderData() as { urls: string[] };
+
+  return (
+    <Container title="Zabytkowe Motory">
+      <ImagesList urls={urls} />
+    </Container>
+  );
 };
 
 export default ZabytkoweMotory;
