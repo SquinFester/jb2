@@ -8,10 +8,11 @@ export const overlaySlice = createSlice({
   initialState,
   reducers: {
     overlayToggle: (state) => !state,
+    switchOff: () => false,
   },
 });
 
-export const { overlayToggle } = overlaySlice.actions;
+export const { overlayToggle, switchOff } = overlaySlice.actions;
 
 export const selectOverlay = (state: RootState) => state.overlay;
 

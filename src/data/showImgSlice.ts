@@ -20,10 +20,11 @@ export const showImgSlice = createSlice({
         (url, index) => index === action.payload
       )[0];
     },
+    setDefault: (state) => (state = initialState),
   },
 });
 
-export const { currentImg, setList } = showImgSlice.actions;
+export const { currentImg, setList, setDefault } = showImgSlice.actions;
 export const selectCurrentImg = (state: RootState) => state.showImg.currentImg;
 export const selectImgList = (state: RootState) => state.showImg.imgList;
 export const selectIndex = (state: RootState) => state.showImg.index;
