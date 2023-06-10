@@ -8,6 +8,7 @@ import Aerograf from "./routes/Aerograf";
 import ZabytkoweMotory from "./routes/ZabytkoweMotory";
 
 import { fetchapp } from "./data/firebase";
+import Modal from "./components/Modal";
 
 const router = createBrowserRouter([
   {
@@ -52,7 +53,12 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      <Modal />
+    </>
+  );
 }
 
 export default App;
