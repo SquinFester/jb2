@@ -10,8 +10,6 @@ const portalElement = document.getElementById("overlay") as Element;
 const Overlay = () => {
   const imgIsReady = useSelector(selectCurrentImg);
 
-  console.log(imgIsReady);
-
   const dispatch = useDispatch();
 
   const isOverlayActive = useSelector(selectOverlay);
