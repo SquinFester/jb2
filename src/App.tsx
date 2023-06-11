@@ -8,7 +8,7 @@ import Aerograf from "./routes/Aerograf";
 import ZabytkoweMotory from "./routes/ZabytkoweMotory";
 
 import { fetchapp } from "./data/firebase";
-import Modal from "./components/Modal";
+import Overlay from "./layouts/Overlay";
 
 const router = createBrowserRouter([
   {
@@ -56,7 +56,7 @@ function App() {
   return (
     <>
       <RouterProvider router={router} />
-      <Modal />
+      <Overlay />
     </>
   );
 }

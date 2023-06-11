@@ -1,14 +1,9 @@
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import { Await } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { overlayToggle, switchOff } from "../data/overlaySlice";
-import {
-  currentImg,
-  setList,
-  selectImgList,
-  setDefault,
-} from "../data/showImgSlice";
+import { overlayToggle } from "../data/overlaySlice";
+import { currentImg, setList, selectImgList } from "../data/showImgSlice";
 
 const ImagesList = ({ urls }: { urls: string[] }) => {
   const dispatch = useDispatch();
@@ -22,11 +17,6 @@ const ImagesList = ({ urls }: { urls: string[] }) => {
   const setCurrentImg = (index: number) => {
     dispatch(currentImg(index));
   };
-
-  useEffect(() => {
-    dispatch(setDefault());
-    dispatch(switchOff());
-  }, []);
 
   return (
     <Suspense fallback={<p>Loading...</p>}>

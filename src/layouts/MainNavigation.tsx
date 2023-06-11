@@ -47,13 +47,19 @@ const MainNavigation = () => {
           {pageList.map((page) => (
             <NavLink
               to={page.path}
-              className={({ isActive }) => (isActive ? "text-red-500" : "")}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-red-500"
+                  : "focus:text-neutral-400 active:text-neutral-400"
+              }
               key={page.id}
               onClick={hideHandler}
             >
               <li
                 className="my-4 border-b pb-1 [word-spacing:0.3rem] 
-              lg:my-0 lg:border-b-0 lg:px-1 lg:py-2 lg:hover:bg-[#474747]"
+              focus:bg-neutral-400 active:bg-neutral-400 lg:my-0 lg:border-b-0 lg:px-1
+              lg:py-2 lg:hover:bg-[#474747]
+              "
               >
                 {page.name}
               </li>

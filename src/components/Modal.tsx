@@ -1,5 +1,4 @@
-import { createPortal } from "react-dom";
-import { selectOverlay, overlayToggle } from "../data/overlaySlice";
+import { overlayToggle } from "../data/overlaySlice";
 import { useSelector, useDispatch } from "react-redux";
 import {
   selectCurrentImg,
@@ -7,13 +6,15 @@ import {
   currentImg,
   selectImgList,
 } from "../data/showImgSlice";
-
-const portalElement = document.getElementById("overlays") as Element;
+import {
+  BsFillArrowRightCircleFill,
+  BsFillArrowLeftCircleFill,
+} from "react-icons/bs";
+import { HiOutlineX } from "react-icons/hi";
 
 const Modal = () => {
   const dispatch = useDispatch();
 
-  const isOverlayActive = useSelector(selectOverlay);
   const imgSrc = useSelector(selectCurrentImg);
   const currentIndex = useSelector(selectIndex);
   const imgList = useSelector(selectImgList);
@@ -34,30 +35,28 @@ const Modal = () => {
 
   return (
     <>
-      {isOverlayActive &&
-        createPortal(
-          <div className="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
-            <img src={imgSrc} />
-            <button onClick={() => prevtImg()} disabled={currentIndex === 0}>
-              prev
-            </button>
-            <button
-              onClick={() => nextImg()}
-              disabled={currentIndex === imgList.length - 1}
-            >
-              next
-            </button>
-          </div>,
-          portalElement
-        )}
-      {isOverlayActive &&
-        createPortal(
-          <div
-            className="fixed top-0 h-full w-full bg-black/50"
-            onClick={() => dispatch(overlayToggle())}
-          ></div>,
-          portalElement
-        )}
+      <HiOutlineX
+        onClick={() => dispatch(overlayToggle())}
+        className="absolute right-1 top-[12.5%] z-50 -translate-y-[12.5%] cursor-pointer text-2xl hover:text-neutral-400 focus:text-neutral-400 active:text-neutral-400 md:right-2 lg:right-3"
+      />
+      <div className="absolute top-1/2 z-30 flex w-screen -translate-y-1/2 justify-between">
+        <div className="flex items-center px-2 md:px-4 lg:px-6">
+          <button onClick={() => prevtImg()} disabled={currentIndex === 0}>
+            <BsFillArrowLeftCircleFill className="text-3xl transition hover:text-neutral-400 focus:text-neutral-400 active:text-neutral-400" />
+          </button>
+        </div>
+        <div>
+          <img src={imgSrc} />
+        </div>
+        <div className="flex items-center px-2 md:px-4 lg:px-6">
+          <button
+            onClick={() => nextImg()}
+            disabled={currentIndex === imgList.length - 1}
+          >
+            <BsFillArrowRightCircleFill className="text-3xl transition hover:text-neutral-400 focus:text-neutral-400 active:text-neutral-400" />
+          </button>
+        </div>
+      </div>
     </>
   );
 };
