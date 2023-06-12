@@ -1,11 +1,16 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import { createBrowserRouter, RouterProvider, defer } from "react-router-dom";
 import Root from "./routes/Root";
 import ErrorPage from "./routes/ErrorPage";
-import HomePage from "./routes/HomePage";
-import RenowacjeFabryczne from "./routes/RenowacjeFabryczne";
-import ContactPage from "./routes/ContactPage";
-import Aerograf from "./routes/Aerograf";
-import ZabytkoweMotory from "./routes/ZabytkoweMotory";
+
+import { fetchapp } from "./data/firebase";
+
+const HomePage = lazy(() => import("./routes/HomePage"));
+const RenowacjeFabryczne = lazy(() => import("./routes/RenowacjeFabryczne"));
+const ContactPage = lazy(() => import("./routes/ContactPage"));
+const Aerograf = lazy(() => import("./routes/Aerograf"));
+const ZabytkoweMotory = lazy(() => import("./routes/ZabytkoweMotory"));
+const Overlay = lazy(() => import("./layouts/Overlay"));
 
 const router = createBrowserRouter([
   {
@@ -15,30 +20,69 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />,
+        element: (
+          <Suspense fallback={<p>Loading...</p>}>
+            <HomePage />
+          </Suspense>
+        ),
       },
       {
         path: "renowacje-fabryczne",
-        element: <RenowacjeFabryczne />,
-      },
-      {
-        path: "kontakt",
-        element: <ContactPage />,
+        element: (
+          <Suspense fallback={<p>Loading...</p>}>
+            <RenowacjeFabryczne />
+          </Suspense>
+        ),
+        loader: async () =>
+          defer({
+            urls: await fetchapp("renowacje"),
+          }),
       },
       {
         path: "aerograf",
-        element: <Aerograf />,
+        element: (
+          <Suspense fallback={<p>Loading...</p>}>
+            <Aerograf />
+          </Suspense>
+        ),
+        loader: async () =>
+          defer({
+            urls: await fetchapp("aerograf"),
+          }),
       },
       {
         path: "zabytkowe-motory",
-        element: <ZabytkoweMotory />,
+        element: (
+          <Suspense fallback={<p>Loading...</p>}>
+            <ZabytkoweMotory />
+          </Suspense>
+        ),
+        loader: async () =>
+          defer({
+            urls: await fetchapp("motory"),
+          }),
+      },
+      {
+        path: "kontakt",
+        element: (
+          <Suspense fallback={<p>Loading...</p>}>
+            <ContactPage />
+          </Suspense>
+        ),
       },
     ],
   },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      <Suspense fallback={<p>Loading...</p>}>
+        <Overlay />
+      </Suspense>
+    </>
+  );
 }
 
 export default App;

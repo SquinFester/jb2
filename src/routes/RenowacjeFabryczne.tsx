@@ -1,7 +1,15 @@
-import Container from "../UI/Container";
+import { useLoaderData } from "react-router-dom";
+import Container from "../layouts/Container";
+import ImagesList from "../components/ImagesList";
 
 const RenowacjeFabryczne = () => {
-  return <Container title="renowacje fabryczne">RenowacjeFabryczne</Container>;
+  const { urls } = useLoaderData() as { urls: string[] };
+
+  return (
+    <Container title="renowacje fabryczne">
+      <ImagesList urls={urls} />
+    </Container>
+  );
 };
 
 export default RenowacjeFabryczne;

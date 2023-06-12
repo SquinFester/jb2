@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Container from "../UI/Container";
+import Container from "../layouts/Container";
 import ContactForm from "../components/ContactForm";
 import EmailStatus from "../components/EmailStatus";
 

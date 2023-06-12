@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 
-type Ofert = {
-  title: string;
+type Offer = {
+  name: string;
   path: string;
   image: string;
 };
 
-const OfertCard = ({ title, path, image }: Ofert) => {
+const OfferCard = ({ name, path, image }: Offer) => {
   return (
     <section
       style={{ backgroundImage: `url(${image})` }}
       className=" grid h-[30rem] w-[18rem] items-center border-2 border-white  bg-cover bg-center "
     >
-      <h1 className="w-full bg-black/50 py-2 text-3xl ">{title}</h1>
+      <h1 className="w-full bg-black/50 py-2 text-3xl ">{name}</h1>
       <div className="flex h-full items-end justify-center overflow-hidden ">
         <Link
           to={path}
@@ -27,4 +27,4 @@ const OfertCard = ({ title, path, image }: Ofert) => {
   );
 };
 
-export default OfertCard;
+export default OfferCard;

@@ -14,7 +14,7 @@ const EmailStatus = ({
   useEffect(() => {
     const timer = setTimeout(() => {
       onSetStatus(() => null);
-    }, 5000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [status]);
@@ -34,7 +34,7 @@ const EmailStatus = ({
 
   return (
     <section
-      className={`fixed top-0 z-10 w-full py-2 text-xl font-semibold ${classSecton}`}
+      className={`fixed z-10 w-full py-2 text-xl font-semibold ${classSecton}`}
     >
       {content}
     </section>

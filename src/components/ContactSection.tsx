@@ -1,8 +1,9 @@
-import Heading from "./Heading";
+import Heading from "../layouts/Heading";
 import HomeInfoSections from "./HomeInfoSections";
 
 import { BiPhoneCall } from "react-icons/bi";
 import { AiFillHome } from "react-icons/ai";
+import { IoIosMail } from "react-icons/io";
 
 import { FaFacebook, FaInstagramSquare, FaTiktok } from "react-icons/fa";
 
@@ -44,6 +45,13 @@ const ContactSection = () => {
           <a href="tel:505-795-006" className="flex items-center gap-2 ">
             <BiPhoneCall className="text-xl" />
             <span className="underline">505-795-006</span>
+          </a>
+          <a
+            href="mailto:squinfester@gmail.com"
+            className="flex items-center gap-2"
+          >
+            <IoIosMail className="text-xl" />
+            squinfester@gmail.com
           </a>
           <h1 className="flex items-start gap-2 leading-6 md:items-end md:leading-none ">
             <AiFillHome className="text-xl" />

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 
 import { Status } from "../routes/ContactPage";
 
@@ -10,79 +10,84 @@ const ContactForm = ({
   onSetStatus: React.Dispatch<React.SetStateAction<Status>>;
 }) => {
   const [loading, setLoading] = useState(false);
+  const [values, setValues] = useState({
+    from_name: "",
+    from_email: "",
+    message: "",
+  });
 
   const statusHandler = (status: Status) => {
     onSetStatus(() => status);
   };
 
-  const form = useRef() as React.MutableRefObject<HTMLFormElement>;
-
-  const sendEmail = (e: React.SyntheticEvent) => {
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(() => true);
 
-    const inputs = form.current.elements;
-    const name = inputs[0] as HTMLInputElement;
-    const email = inputs[1] as HTMLInputElement;
-    const message = inputs[2] as HTMLInputElement;
+    const { from_name, from_email, message } = values;
 
     if (
-      name.value.trim().length > 0 &&
-      email.value.trim().length > 0 &&
-      email.value.includes("@") &&
-      message.value.trim().length > 0
+      from_name.trim().length === 0 &&
+      from_email.trim().length === 0 &&
+      !from_email.includes("@") &&
+      message.trim().length === 0
     ) {
-      emailjs
-        .sendForm(
-          "service_stqbg3s",
-          "template_289gshc",
-          form.current,
-          "-Bz90bhoChewjmhy0"
-        )
-        .then(
-          (result) => {
-            console.log(result.text);
-          },
-          (error) => {
-            console.log(error.text);
-          }
-        );
-
-      name.value = "";
-      email.value = "";
-      message.value = "";
-      statusHandler("Sukces");
-      setLoading(() => false);
-    } else {
       statusHandler("Błąd");
-      setLoading(() => false);
       return;
     }
+
+    emailjs
+      .sendForm(
+        "service_stqbg3s",
+        "template_289gshc",
+        e.target as HTMLFormElement,
+        "-Bz90bhoChewjmhy0"
+      )
+      .then(
+        () => {
+          statusHandler("Sukces");
+          setValues(() => ({
+            from_name: "",
+            from_email: "",
+            message: "",
+          }));
+        },
+        () => {
+          statusHandler("Błąd");
+        }
+      );
+    setLoading(() => false);
+  };
+
+  const changeHandler = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return (
-    <form
-      ref={form}
-      onSubmit={sendEmail}
-      className="mx-auto flex max-w-lg flex-col gap-5"
-    >
+    <form onSubmit={sendEmail} className="mx-auto flex max-w-lg flex-col gap-5">
       <section className="flex flex-col gap-2">
-        <label htmlFor="user_name">Imię:</label>
+        <label htmlFor="from_name">Imię:</label>
         <input
-          type="text"
-          name="user_name"
-          id="user_name"
-          className="p-1 text-black"
-          required
-        />
-        <label htmlFor="user_email">Email:</label>
-        <input
-          type="email"
-          name="user_email"
-          id="user_email"
+          id="from_name"
+          name="from_name"
+          value={values.from_name}
+          onChange={changeHandler}
           className="p-1  text-black"
-          required
         />
+
+        <label htmlFor="from_email">Email:</label>
+        <input
+          id="from_email"
+          name="from_email"
+          value={values.from_email}
+          onChange={changeHandler}
+          className="p-1  text-black"
+        />
+
         <label htmlFor="message">Wiadomość:</label>
         <textarea
           name="message"
@@ -90,6 +95,8 @@ const ContactForm = ({
           className="p-1 text-black"
           rows={10}
           required
+          onChange={changeHandler}
+          value={values.message}
         />
       </section>
       <button
