@@ -16,6 +16,7 @@ const ContactSection = () => {
           <div className="flex flex-col gap-4 md:gap-2">
             <a
               href="https://www.facebook.com/"
+              target="_blank"
               className="flex items-center gap-2"
             >
               <FaFacebook />
@@ -23,6 +24,7 @@ const ContactSection = () => {
             </a>
             <a
               href="https://www.instagram.com/"
+              target="_blank"
               className="flex items-center gap-2"
             >
               <FaInstagramSquare />
@@ -30,6 +32,7 @@ const ContactSection = () => {
             </a>
             <a
               href="https://www.tiktok.com/"
+              target="_blank"
               className="flex items-center gap-2"
             >
               <FaTiktok />

@@ -10,13 +10,13 @@ const SocialMediaSection = () => {
     <HomeInfoSections className="flex flex-col items-center border-b-2 border-white">
       <Heading title="Obserwuj nas na" />
       <div className="flex w-full items-center justify-center gap-5 text-5xl">
-        <a href="https://www.facebook.com/">
+        <a href="https://www.facebook.com/" target="_blank">
           <FaFacebook />
         </a>
-        <a href="https://www.instagram.com/">
+        <a href="https://www.instagram.com/" target="_blank">
           <FaInstagramSquare />
         </a>
-        <a href="https://www.tiktok.com/">
+        <a href="https://www.tiktok.com/" target="_blank">
           <FaTiktok />
         </a>
       </div>
