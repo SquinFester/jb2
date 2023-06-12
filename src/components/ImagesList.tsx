@@ -27,6 +27,7 @@ const ImagesList = ({ urls }: { urls: string[] }) => {
               <img
                 key={loadedUrl}
                 src={loadedUrl}
+                loading="lazy"
                 className="cursor-pointer"
                 onClick={() => {
                   dispatch(overlayToggle());

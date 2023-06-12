@@ -1,5 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, list, getDownloadURL } from "firebase/storage";
+import { swapToken } from "./nextPageSlice";
+import { useDispatch } from "react-redux";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCrlTd69mX2tf5XyOyucb1BptyBjvQN3ug",
@@ -18,11 +20,18 @@ export const storage = getStorage(app);
 // Create a reference under which you want to list
 
 // Find all the prefixes and items.
-export const fetchapp = async (folder: string) => {
+export const fetchapp = async (folder: string, pageToken = "") => {
+  if (pageToken === undefined) {
+    return [];
+  }
+
   const listRef = ref(storage, `${folder}/`);
 
-  const response = await list(listRef, { maxResults: 100 });
-  const dataPromises = response.items.map((item) =>
+  const result = await list(listRef, {
+    maxResults: 2,
+    pageToken: pageToken,
+  });
+  const dataPromises = result.items.map((item) =>
     getDownloadURL(ref(storage, `${folder}/${item.name}`))
   );
 

@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider, defer } from "react-router-dom";
+
 import Root from "./routes/Root";
 import ErrorPage from "./routes/ErrorPage";
 
