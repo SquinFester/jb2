@@ -1,17 +1,9 @@
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, list, getDownloadURL } from "firebase/storage";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCrlTd69mX2tf5XyOyucb1BptyBjvQN3ug",
-  authDomain: "jeremiboracki.firebaseapp.com",
-  projectId: "jeremiboracki",
-  storageBucket: "jeremiboracki.appspot.com",
-  messagingSenderId: "526442525300",
-  appId: "1:526442525300:web:ef4c4962c6fcf39f521721",
-};
+import FIREBASE_CONFIG from "./firebase-config";
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(FIREBASE_CONFIG);
 
 export const storage = getStorage(app);
 
