@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="w-screen text-center">
+    <footer className="w-full text-center">
       Przymencki&copy;{new Date().getFullYear()}
     </footer>
   );

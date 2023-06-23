@@ -15,7 +15,7 @@ const Navbar = () => {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 w-screen bg-primary shadow-md">
+    <header className="sticky top-0 z-50 w-full bg-primary shadow-md">
       <div className="mx-auto w-2/3 lg:flex lg:items-center lg:justify-between">
         <div className=" relative z-50 flex w-full justify-between bg-primary py-4 lg:w-fit">
           <Link href="/">Logo</Link>
