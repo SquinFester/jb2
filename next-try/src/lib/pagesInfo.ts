@@ -1,10 +1,5 @@
 const pagesInfo: PagesInfo[] = [
   {
-    id: "p0",
-    path: "/",
-    title: "strona głowna",
-  },
-  {
     id: "p1",
     path: "/oferta/renowacje",
     title: "renowacje",
