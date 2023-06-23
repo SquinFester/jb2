@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const pathname = usePathname();
-  const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [showMenu, setShowMenu] = useState<boolean>(true);
 
   useEffect(() => {
     setShowMenu(() => false);
@@ -31,14 +31,17 @@ const Navbar = () => {
          showMenu ? "" : "-translate-y-[150%] shadow-none"
        } duration-500 ease-out lg:static lg:translate-y-0 `}
         >
-          <ul className="mx-auto flex w-2/3 flex-col gap-5 lg:flex-row ">
+          <ul className="mx-auto flex w-2/3 flex-col gap-5 py-4 lg:flex-row ">
             {pagesInfo.map((nav) => {
               const isActive = pathname.endsWith(nav.path);
               return (
-                <li key={nav.id} className="whitespace-nowrap">
+                <li
+                  key={nav.id}
+                  className="mb-2 whitespace-nowrap border-b-2 border-white  pb-1 uppercase "
+                >
                   <Link
                     href={nav.path}
-                    className={`${isActive ? "text-blue-500" : "text-red-500"}`}
+                    className={`${isActive ? "text-red-500" : ""}`}
                     onClick={() => setShowMenu(() => false)}
                   >
                     {nav.title}
