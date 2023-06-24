@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="pl">
       <body className={`bg-primary text-white ${geologica.className}`}>
         <Navbar />
-        <Container>{children}</Container>
+        <section className="content-height">{children}</section>
         <Footer />
       </body>
     </html>

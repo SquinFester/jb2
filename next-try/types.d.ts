@@ -3,4 +3,5 @@ type PagesInfo = {
   title: string;
   path: string;
   img?: string;
+  offer?: boolean;
 };
