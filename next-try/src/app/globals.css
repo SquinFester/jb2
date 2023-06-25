@@ -4,7 +4,7 @@
 
 @layer base {
   .content-height {
-    min-height: calc(100vh - 56px - 40px);
+    min-height: calc(100vh - 72px - 40px);
   }
   .bg-banner {
     background-image: url("/public/images/banner-bg.png");

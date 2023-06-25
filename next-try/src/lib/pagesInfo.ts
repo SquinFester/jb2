@@ -1,7 +1,7 @@
 const pagesInfo: PagesInfo[] = [
   {
     id: "p1",
-    path: "/oferta/renowacje",
+    path: "/oferta/renowacje-fabryczne",
     title: "renowacje fabryczne",
     img: "/images/offers/rem.png",
     offer: true,
