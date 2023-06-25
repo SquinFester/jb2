@@ -5,3 +5,4 @@ type PagesInfo = {
   img?: string;
   offer?: boolean;
 };
+type Status = null | "Sukces" | "Błąd";
