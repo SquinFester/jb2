@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 
 import emailjs from "@emailjs/browser";
+import emailjsConfig from "@/lib/emailjsConfig";
 
 const ContactForm = ({
   onSetStatus,
@@ -39,10 +40,10 @@ const ContactForm = ({
 
     emailjs
       .sendForm(
-        "service_stqbg3s",
-        "template_289gshc",
+        emailjsConfig.service,
+        emailjsConfig.temple,
         e.target as HTMLFormElement,
-        "-Bz90bhoChewjmhy0"
+        emailjsConfig.api
       )
       .then(
         () => {
