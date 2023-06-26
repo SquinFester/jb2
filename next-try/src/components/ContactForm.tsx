@@ -69,7 +69,10 @@ const ContactForm = ({
   };
 
   return (
-    <form onSubmit={sendEmail} className="flex w-2/3 max-w-lg flex-col gap-5">
+    <form
+      onSubmit={sendEmail}
+      className="flex w-full max-w-lg flex-col gap-5 lg:w-2/3"
+    >
       <section className="flex flex-col gap-2">
         <label htmlFor="from_name">Imię:</label>
         <input

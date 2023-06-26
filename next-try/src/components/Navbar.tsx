@@ -30,9 +30,9 @@ const Navbar = () => {
       </div>
 
       <nav
-        className={`fixed left-0 z-10 w-screen origin-top bg-primary text-xl shadow-md duration-500 ease-out
-       lg:static lg:w-fit  lg:translate-y-0 lg:flex-row lg:text-base lg:shadow-none lg:duration-0
-       ${isActive && startAnimations ? "" : "-translate-y-[150%] shadow-none"}
+        className={` fixed left-0 z-10 w-screen origin-top bg-primary text-xl shadow-md duration-500
+       ease-out lg:static  lg:w-fit lg:translate-y-0 lg:flex-row lg:text-base lg:shadow-none lg:duration-0
+       ${isActive && startAnimations ? "" : " -translate-y-[150%] shadow-none"}
        `}
       >
         <ul className="mx-auto flex w-2/3 flex-col gap-5 py-4 lg:m-0 lg:flex-row lg:gap-10">

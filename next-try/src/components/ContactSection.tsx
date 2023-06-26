@@ -43,13 +43,13 @@ const ContactSection = () => {
               <BiPhoneCall className="text-xl" />
               <span className="underline">505-795-006</span>
             </a>
-            <a
+            {/* <a
               href="mailto:squinfester@gmail.com"
               className=" flex items-center gap-2"
             >
               <IoIosMail className="text-xl" />
               jeremiboracki@gmail.com
-            </a>
+            </a> */}
             <h1 className="flex items-start gap-2 leading-6 md:items-end md:leading-none ">
               <AiFillHome className="text-xl" />
               Nowe tłoki; <br className="md:hidden" />

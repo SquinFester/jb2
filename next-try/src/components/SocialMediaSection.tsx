@@ -6,7 +6,7 @@ import { FaFacebook, FaInstagramSquare, FaTiktok } from "react-icons/fa";
 
 const SocialMediaSection = () => {
   return (
-    <section className="border-b-2 border-white py-10">
+    <section className=" border-b-2 border-white py-10">
       <Heading>Obserwuj nas na</Heading>
       <Container styles="gap-5">
         <div className="flex gap-5 text-5xl">
