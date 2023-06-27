@@ -10,19 +10,25 @@ export const storage = getStorage(app);
 // Create a reference under which you want to list
 
 // Find all the prefixes and items.
+
+type FetchedDataType = {
+  urlList: string[];
+  nextPage: string | undefined;
+};
+
 export const fetchapp = async (
   folder: string,
-  pageToken: string | undefined
+  pageToken: string | undefined,
+  limit: number
 ) => {
   if (pageToken === undefined) {
-    return { urlList: [], nextPage: undefined };
-    return;
+    return { urlList: [], nextPage: undefined } as FetchedDataType;
   }
 
   const listRef = ref(storage, `${folder}/`);
 
   const response = await list(listRef, {
-    maxResults: 20,
+    maxResults: limit,
     pageToken: pageToken,
   });
   const dataPromises = response.items.map((item) =>
@@ -31,5 +37,5 @@ export const fetchapp = async (
 
   const urlList = await Promise.all(dataPromises);
   const nextPage = response.nextPageToken;
-  return { urlList, nextPage };
+  return { urlList, nextPage } as FetchedDataType;
 };

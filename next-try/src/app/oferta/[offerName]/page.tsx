@@ -34,11 +34,12 @@ export default function Offer({ params: { offerName } }: Params) {
     index: 0,
   });
 
-  const getImg = async () => {
-    const res = await fetchapp(offerName, pageToken);
+  const getImg = async (limit: number = 5) => {
+    const res = await fetchapp(offerName, pageToken, limit);
     if (res !== undefined) {
       setImgsList((prev) => prev.concat(res.urlList));
       setPageToken(() => res.nextPage);
+      return res.urlList;
     }
   };
 
@@ -59,17 +60,20 @@ export default function Offer({ params: { offerName } }: Params) {
     setCurrentImg(() => ({ src: prevImg[0], index: prevIndex }));
   };
 
-  const nextImg = () => {
-    if (currentImg.index === imgsList.length - 1) {
-      getImg();
-    }
-
-    const nextImg = imgsList.filter(
-      (src, index) => index === currentImg.index + 1
-    );
+  const nextImg = async () => {
     const nextIndex = currentImg.index + 1;
 
-    setCurrentImg(() => ({ src: nextImg[0], index: nextIndex }));
+    if (currentImg.index === imgsList.length - 1) {
+      const nextImgUrl = await getImg(1);
+      if (nextImgUrl !== undefined) {
+        setCurrentImg(() => ({ src: nextImgUrl[0], index: nextIndex }));
+      }
+    } else {
+      const nextImg = imgsList.filter(
+        (src, index) => index === currentImg.index + 1
+      );
+      setCurrentImg(() => ({ src: nextImg[0], index: nextIndex }));
+    }
   };
 
   return (
