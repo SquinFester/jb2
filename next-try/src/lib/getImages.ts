@@ -36,6 +36,7 @@ export const fetchapp = async (
   );
 
   const urlList = await Promise.all(dataPromises);
+
   const nextPage = response.nextPageToken;
   return { urlList, nextPage } as FetchedDataType;
 };

@@ -44,7 +44,21 @@ export default function Offer({ params: { offerName } }: Params) {
   };
 
   useEffect(() => {
-    getImg();
+    const pageHeight = window.innerHeight;
+    const pageWidth = +window.innerWidth;
+
+    let columns: number;
+    if (pageWidth <= 640) {
+      columns = 2;
+    } else if (pageWidth <= 768) {
+      columns = 3;
+    } else if (pageWidth <= 1024) {
+      columns = 4;
+    }
+
+    const imgPerPage = +((pageHeight / 150) * columns).toFixed(0);
+
+    getImg(imgPerPage);
   }, []);
 
   const prevImg = () => {
@@ -79,7 +93,7 @@ export default function Offer({ params: { offerName } }: Params) {
   return (
     <section className="pt-10">
       <Heading>{offerName.toUpperCase().replace("-", " ")}</Heading>
-      <Container>
+      <Container styles="h-screen">
         <InfiniteScroll
           dataLength={imgsList.length}
           next={getImg}
