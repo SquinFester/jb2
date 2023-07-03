@@ -75,6 +75,10 @@ export default function Offer({ params: { offerName } }: Params) {
   };
 
   const nextImg = async () => {
+    if (pageToken === undefined && currentImg.index === imgsList.length - 1) {
+      return;
+    }
+
     const nextIndex = currentImg.index + 1;
 
     if (currentImg.index === imgsList.length - 1) {
