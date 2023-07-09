@@ -33,14 +33,18 @@ export default function Offer({ params: { offerName } }: Params) {
     src: "",
     index: 0,
   });
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getImg = async (limit: number = 5) => {
+    setIsLoading(() => true);
     const res = await fetchapp(offerName, pageToken, limit);
     if (res !== undefined) {
       setImgsList((prev) => prev.concat(res.urlList));
       setPageToken(() => res.nextPage);
+      setIsLoading(() => false);
       return res.urlList;
     }
+    setIsLoading(() => false);
   };
 
   useEffect(() => {
@@ -74,8 +78,11 @@ export default function Offer({ params: { offerName } }: Params) {
     setCurrentImg(() => ({ src: prevImg[0], index: prevIndex }));
   };
 
+  const nextPageController =
+    pageToken === undefined && currentImg.index === imgsList.length - 1;
+
   const nextImg = async () => {
-    if (pageToken === undefined && currentImg.index === imgsList.length - 1) {
+    if (nextPageController) {
       return;
     }
 
@@ -94,6 +101,10 @@ export default function Offer({ params: { offerName } }: Params) {
     }
   };
 
+  const closeModalHandler = () => {
+    setCurrentImg(() => ({ src: "", index: 0 }));
+  };
+
   return (
     <section className="pt-10">
       <Heading>{offerName.toUpperCase().replace("-", " ")}</Heading>
@@ -101,7 +112,7 @@ export default function Offer({ params: { offerName } }: Params) {
         <InfiniteScroll
           dataLength={imgsList.length}
           next={getImg}
-          loader={<p>Loading...</p>}
+          loader={<p>Ładowanie...</p>}
           hasMore={pageToken !== undefined}
         >
           <ul className="grid grid-cols-2 gap-x-2 gap-y-4 md:grid-cols-3 lg:grid-cols-4">
@@ -117,7 +128,20 @@ export default function Offer({ params: { offerName } }: Params) {
           </ul>
         </InfiniteScroll>
         {currentImg.src && (
-          <Modal src={currentImg.src} prevImg={prevImg} nextImg={nextImg} />
+          <Modal
+            src={currentImg.src}
+            prevImg={prevImg}
+            nextImg={nextImg}
+            closeModal={closeModalHandler}
+            nextPageController={nextPageController}
+            index={currentImg.index}
+          />
+        )}
+
+        {pageToken !== undefined && isLoading && (
+          <button className="bg-neutral-400 p-2 hover:bg-neutral-600 focus:bg-neutral-600 active:bg-neutral-600">
+            Załaduj więcej
+          </button>
         )}
       </Container>
     </section>

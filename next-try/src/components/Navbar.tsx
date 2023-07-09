@@ -36,6 +36,22 @@ const Navbar = () => {
        `}
       >
         <ul className="mx-auto flex w-2/3 flex-col gap-5 py-4 lg:m-0 lg:flex-row lg:gap-10">
+          <li
+            className="mb-2 whitespace-nowrap border-b-2 border-white  pb-1 uppercase [word-spacing:0.3rem] lg:m-0 lg:hidden lg:border-none lg:pb-0"
+            key={"pg1"}
+          >
+            <Link
+              href={"/"}
+              className={`${isActive ? "text-red-500" : ""} `}
+              onClick={() => {
+                setIsActive(() => false);
+                setStartAnimations(() => false);
+              }}
+            >
+              STRONA GŁÓWNA
+            </Link>
+          </li>
+
           {pagesInfo.map((nav) => {
             const isActive = pathname.endsWith(nav.path);
             return (
