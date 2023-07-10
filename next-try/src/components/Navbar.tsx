@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import HamburgerMenu from "./HamburgerMenu";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -15,10 +16,21 @@ const Navbar = () => {
     setIsActive(() => false);
   }, [pathname]);
 
+  const isActiveHandler = (path: string) => {
+    return pathname.endsWith(path);
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full bg-primary shadow-md lg:flex lg:items-center lg:justify-around">
       <div className=" relative z-50 flex w-full justify-between bg-primary px-20 py-6 lg:w-fit lg:px-0">
-        <Link href="/">Logo</Link>
+        <Link href="/">
+          <Image
+            src={"/images/logoNav.png"}
+            alt="logo"
+            width={130}
+            height={100}
+          />
+        </Link>
         <HamburgerMenu
           visable={isActive}
           onClick={() => {
@@ -42,7 +54,7 @@ const Navbar = () => {
           >
             <Link
               href={"/"}
-              className={`${isActive ? "text-red-500" : ""} `}
+              className={`${isActiveHandler("/") ? "text-red-500" : ""} `}
               onClick={() => {
                 setIsActive(() => false);
                 setStartAnimations(() => false);
@@ -53,7 +65,6 @@ const Navbar = () => {
           </li>
 
           {pagesInfo.map((nav) => {
-            const isActive = pathname.endsWith(nav.path);
             return (
               <li
                 key={nav.id}
@@ -61,7 +72,9 @@ const Navbar = () => {
               >
                 <Link
                   href={nav.path}
-                  className={`${isActive ? "text-red-500" : ""}`}
+                  className={`${
+                    isActiveHandler(nav.path) ? "text-red-500" : ""
+                  }`}
                   onClick={() => {
                     setIsActive(() => false);
                     setStartAnimations(() => false);

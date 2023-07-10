@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/app/loading";
 import Container from "@/components/Container";
 import Heading from "@/components/Heading";
 import Modal from "@/components/Modal";
@@ -112,7 +113,7 @@ export default function Offer({ params: { offerName } }: Params) {
         <InfiniteScroll
           dataLength={imgsList.length}
           next={getImg}
-          loader={<p>Ładowanie...</p>}
+          loader={<Loading />}
           hasMore={pageToken !== undefined}
         >
           <ul className="grid grid-cols-2 gap-x-2 gap-y-4 md:grid-cols-3 lg:grid-cols-4">

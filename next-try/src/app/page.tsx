@@ -1,16 +1,19 @@
 import BannerSection from "@/components/BannerSection";
 import ContactSection from "@/components/ContactSection";
-import Container from "@/components/Container";
 import OffersSection from "@/components/OffersSection";
 import SocialMediaSection from "@/components/SocialMediaSection";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export default function Home() {
   return (
     <>
-      <BannerSection />
-      <OffersSection />
-      <SocialMediaSection />
-      <ContactSection />
+      <Suspense fallback={<Loading />}>
+        <BannerSection />
+        <OffersSection />
+        <SocialMediaSection />
+        <ContactSection />
+      </Suspense>
     </>
   );
 }
