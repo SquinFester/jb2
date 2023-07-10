@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Loading = () => {
   return (
-    <div>
+    <div className="flex h-screen w-screen items-center justify-center">
       <Image
         src="/images/loadingSpinner.svg"
         alt="loading..."
