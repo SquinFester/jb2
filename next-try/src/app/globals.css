@@ -9,4 +9,8 @@
   .bg-banner {
     background-image: url("/public/images/banner-bg.png");
   }
+
+  .offer-content-height {
+    height: calc(100vh - 72px - 2.5rem - 52px);
+  }
 }

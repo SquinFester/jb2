@@ -52,7 +52,7 @@ export default function Offer({ params: { offerName } }: Params) {
     const pageHeight = window.innerHeight;
     const pageWidth = +window.innerWidth;
 
-    let columns: number;
+    let columns: number
     if (pageWidth <= 640) {
       columns = 2;
     } else if (pageWidth <= 768) {
@@ -61,9 +61,10 @@ export default function Offer({ params: { offerName } }: Params) {
       columns = 4;
     }
 
-    const imgPerPage = +((pageHeight / 150) * columns).toFixed(0);
+      const imgPerPage = +((pageHeight / 150) * columns).toFixed(0);
 
-    getImg(imgPerPage);
+      getImg(imgPerPage);
+   
   }, []);
 
   const prevImg = () => {
@@ -139,7 +140,7 @@ export default function Offer({ params: { offerName } }: Params) {
           />
         )}
 
-        {pageToken !== undefined && isLoading && (
+        {pageToken !== undefined && isLoading && imgsList.length > 0 && (
           <button className="bg-neutral-400 p-2 hover:bg-neutral-600 focus:bg-neutral-600 active:bg-neutral-600">
             Załaduj więcej
           </button>
