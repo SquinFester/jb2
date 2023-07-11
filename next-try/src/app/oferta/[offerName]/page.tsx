@@ -50,21 +50,10 @@ export default function Offer({ params: { offerName } }: Params) {
 
   useEffect(() => {
     const pageHeight = window.innerHeight;
-    const pageWidth = +window.innerWidth;
 
-    let columns: number
-    if (pageWidth <= 640) {
-      columns = 2;
-    } else if (pageWidth <= 768) {
-      columns = 3;
-    } else if (pageWidth <= 1024) {
-      columns = 4;
-    }
+    const imgPerPage = +((pageHeight / 150) * 5).toFixed(0);
 
-      const imgPerPage = +((pageHeight / 150) * columns).toFixed(0);
-
-      getImg(imgPerPage);
-   
+    getImg(imgPerPage);
   }, []);
 
   const prevImg = () => {
