@@ -15,10 +15,10 @@ const SocialMediaSection = () => {
           <FaTiktok />
         </div>
         <Image
-          src="/images/skull2.png"
+          src="/images/skull.png"
           alt="skull"
-          width={200}
-          height={200}
+          width={180}
+          height={180}
           quality={100}
         />
       </Container>

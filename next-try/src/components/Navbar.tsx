@@ -21,7 +21,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-primary shadow-md lg:flex lg:items-center lg:justify-around">
+    <header className="z-50 w-full bg-primary shadow-md lg:flex lg:items-center lg:justify-around">
       <div className=" relative z-50 flex w-full justify-between bg-primary px-20 py-6 lg:w-fit lg:px-0">
         <Link href="/">
           <Image src="/images/logoNav.png" alt="log" width={140} height={24} />
