@@ -15,7 +15,7 @@ const SocialMediaSection = () => {
           <FaTiktok />
         </div>
         <Image
-          src="/images/skull.png"
+          src="/images/skull2.png"
           alt="skull"
           width={200}
           height={200}
