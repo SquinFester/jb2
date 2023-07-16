@@ -20,6 +20,7 @@ const SocialMediaSection = () => {
           width={180}
           height={180}
           quality={100}
+          className="md:w-[200px]"
         />
       </Container>
     </section>

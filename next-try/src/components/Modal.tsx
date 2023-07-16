@@ -18,12 +18,12 @@ const Modal = ({
   index: number;
 }) => {
   return (
-    <div className="fixed flex w-full items-center justify-center  ">
+    <div className="fixed flex h-screen w-full items-center justify-center  ">
       <div
         className="fixed left-0 top-0 h-screen w-full bg-black/50"
         onClick={() => closeModal()}
       ></div>
-      <div className="relative z-20 flex flex-col">
+      <div className="fixed top-[20%] z-20 flex flex-col">
         <button
           onClick={() => closeModal()}
           className="absolute -right-2 -top-2 z-40"
