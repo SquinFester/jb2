@@ -34,18 +34,12 @@ const Modal = ({
         <div className="flex w-full justify-around">
           {index !== 0 && (
             <button onClick={() => prevImg()}>
-              <BsArrowLeft
-                size={30}
-                className="hover:text-neutral-400 focus:text-neutral-400 active:text-neutral-400"
-              />
+              <BsArrowLeft size={30} />
             </button>
           )}
           {!nextPageController && (
             <button onClick={() => nextImg()}>
-              <BsArrowRight
-                size={30}
-                className="hover:text-neutral-400 focus:text-neutral-400 active:text-neutral-400"
-              />
+              <BsArrowRight size={30} />
             </button>
           )}
         </div>
