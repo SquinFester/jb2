@@ -113,7 +113,13 @@ export default function Offer({ params: { offerName } }: Params) {
                 onClick={() => setCurrentImg(() => ({ src: u, index: i }))}
                 className="cursor-pointer"
               >
-                <Image src={u} alt="" width={300} height={300} />
+                <Image
+                  src={u}
+                  alt=""
+                  width={300}
+                  height={300}
+                  placeholder="blur"
+                />
               </li>
             ))}
           </ul>

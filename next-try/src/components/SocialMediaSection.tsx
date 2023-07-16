@@ -14,7 +14,13 @@ const SocialMediaSection = () => {
           <FaInstagramSquare />
           <FaTiktok />
         </div>
-        <Image src="/images/skull.png" alt="skull" width={250} height={250} />
+        <Image
+          src="/images/skull.png"
+          alt="skull"
+          width={200}
+          height={200}
+          quality={100}
+        />
       </Container>
     </section>
   );
