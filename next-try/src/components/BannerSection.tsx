@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const BannerSection = () => {
   return (
-    <section className="grid h-[94vh] w-full place-content-center place-items-center gap-10  bg-[url('/images/banner-bg.png')] bg-cover bg-fixed bg-top bg-no-repeat brightness-90">
+    <section className="grid h-[94vh] w-full place-content-center place-items-center gap-10  bg-[url('/images/banner-bg.png')] bg-cover bg-top bg-no-repeat brightness-90 lg:bg-fixed">
       <Image src="/images/logo.png" alt="logo" width={300} height={300} />
       <h1
         className="relative w-3/4 py-4 text-center text-lg font-semibold
